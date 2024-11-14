@@ -55,10 +55,6 @@ def index():
 def cek():
     return render_template('check.html')
 
-@app.route('/regis')
-def regis():
-    return render_template('regis.html')
-
 @app.route('/admin')
 def ad():
     return render_template('loginadmin.html')
@@ -155,7 +151,7 @@ def login():
             return jsonify({'success': False, 'message': 'SK Not Register'})
     return render_template('index.html')
 
-@app.route('/add', methods=['POST'])
+@app.route('/regis', methods=['GET', 'POST'])
 def add():
     sk = session.get('sk')
     status = check_sk(sk)
