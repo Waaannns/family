@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='edit.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Edit Data</h1>
+        <form method="POST" action="/edit/{{ data['sk'] }}">
+            <label for="nama">Nama</label>
+            <input type="text" id="nama" name="nama" value="{{ data['nama'] }}" required>
+
+            <label for="entry">Tanggal Masuk</label>
+            <input type="text" id="entry" name="entry" value="{{ data['entry_date'] }}" required>
+
+            <label for="exp">Tanggal Exp</label>
+            <input type="text" id="exp" name="exp" value="{{ data['exp_date'] }}" required>
+            
+            <input type="submit" value="Simpan">
+            <a href="/admin" class="back-link">Kembali</a>
+        </form>
+    </div>
+</body>
+</html>

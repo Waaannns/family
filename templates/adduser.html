@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='adduser.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Tambah Data</h1>
+        <form method="POST" action="/adduser">
+            <table>
+                <tr>
+                    <td><label for="nama">Nama</label></td>
+                    <td><input type="text" id="nama" name="nama" required></td>
+                </tr>
+                <tr>
+                    <td><label for="entry">Tanggal Masuk</label></td>
+                    <td><input type="text" id="entry" name="entry" required></td>
+                </tr>
+                <tr>
+                    <td><label for="exp">Tanggal Exp</label></td>
+                    <td><input type="text" id="exp" name="exp" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Tambah">
+                        <a href="/loginadmin" class="back-link">Kembali</a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

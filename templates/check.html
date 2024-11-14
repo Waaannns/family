@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Family Moo Auto Create</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='check.css') }}">
+</head>
+<body>
+    <h1>Kuota Kupon Bulanan</h1>
+    <table>
+        <tr>
+            <th>Nama Kupon</th>
+            <th>Jumlah Kupon</th>
+        </tr>
+        {% for row in data %}
+        <tr>
+            <td>{{ row['nama'] }}</td>
+            <td>{{ row['jumlah'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <div class="form-container">
+        <form id="dataForm" onsubmit="handleSubmit(event)" method="POST">
+            <input type="submit" value="      Cek Kupon      ">
+            <a href="/" class="back-link">Kembali</a>
+        </form>
+    </div>
+    <div id="modal" class="modal">
+        <div id="modal-content" class="modal-content"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='check.js') }}"></script>
+</body>
+</html>

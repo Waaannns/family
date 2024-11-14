@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Moo Auto Create</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='regis.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Masukkan Data</h1>
+        <form id="dataForm" onsubmit="handleSubmit(event)" method="POST">
+            <table>
+                <tr>
+                    <td><label for="fn">Nama Depan</label></td>
+                    <td><input type="text" id="fn" name="fn" required></td>
+                </tr>
+                <tr>
+                    <td><label for="ln">Nama Belakang</label></td>
+                    <td><input type="text" id="ln" name="ln" required></td>
+                </tr>
+                <tr>
+                    <td><label for="pw">Password</label></td>
+                    <td><input type="text" id="pw" name="pw" required></td>
+                </tr>
+                <tr>
+                    <td><label for="no">Nomor Telepon</label></td>
+                    <td><input type="text" id="no" name="no" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Register">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div id="modal" class="modal">
+        <div id="modal-content" class="modal-content"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='regis.js') }}"></script>
+</body>
+</html>

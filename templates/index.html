@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Moo Auto Create</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Selamat Datang Di Bot Family Auto Create And Reedem</h1>
+        <form id="dataForm" onsubmit="handleSubmit(event)" method="POST">
+            <table>
+                <tr>
+                    <td><label for="sk">Secret Key</label></td>
+                    <td><input type="text" id="sk" name="sk" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Login">
+                        <a href="/cek" class="back-link">Cek Kupon</a>
+                        <a href="/admin" class="back-link">Admin</a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div id="modal" class="modal">
+        <div id="modal-content" class="modal-content"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
+</html>

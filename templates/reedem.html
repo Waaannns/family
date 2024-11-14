@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Moo Auto Create</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='reedem.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Pilih E-Wallet/Giftcard</h1>
+        <form id="dataForm" onsubmit="handleSubmit(event)" method="POST">
+            <table>
+                <tr>
+                    <td><label for="ch">Kategori</label></td>
+                    <td>
+                        <select id="ch" name="ch" required>
+                        <option value="" disabled selected>Pilih Kategori</option>
+                        <option value="gopay">Gopay</option>
+                        <option value="shopeepay">Spay</option>
+                        <option value="extra">Extra</option>
+                    </select>
+                </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Redeem">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div id="modal" class="modal">
+        <div id="modal-content" class="modal-content"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='reedem.js') }}"></script>
+</body>
+</html>

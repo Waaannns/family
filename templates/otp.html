@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Moo Auto Create</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='otp.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Masukkan OTP</h1>
+        <form id="dataForm" onsubmit="handleSubmit(event)" method="POST" action="/otp">
+            <table>
+                <tr>
+                    <td><label for="otp">OTP</label></td>
+                    <td><input type="text" id="otp" name="otp" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Submit">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div id="modal" class="modal">
+        <div id="modal-content" class="modal-content"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='otp.js') }}"></script>
+</body>
+</html>

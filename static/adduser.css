@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f9;
+    margin: 0;
+}
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.form-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+.form-container table {
+    width: 100%;
+}
+.form-container label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.form-container input[type="text"],
+.form-container input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.form-container input[type="submit"] {
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+.form-container input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+.form-container .back-link {
+    display: block;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 4px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 1px auto;
+    width: 260px;
+}
+.form-container .back-link:hover {
+    background-color: #0056b3;
+}

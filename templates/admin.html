@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Pelanggan</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+    <h1>Data Pelanggan</h1>
+    <table>
+        <tr>
+            <th>Secret Key</th>
+            <th>Nama</th>
+            <th>Tanggal Masuk</th>
+            <th>Tanggal Exp</th>
+            <th>Aksi</th>
+        </tr>
+        {% for row in data %}
+        <tr>
+            <td>{{ row['sk'] }}</td>
+            <td>{{ row['nama'] }}</td>
+            <td>{{ row['entry_date'] }}</td>
+            <td>{{ row['exp_date'] }}</td>
+            <td>
+                <a href="/edit/{{ row['sk'] }}">Edit</a>
+                <a href="/delete/{{ row['sk'] }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/adduser" class="btn-tambah-data">Tambah Data</a>
+</body>
+</html>
