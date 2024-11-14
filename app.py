@@ -151,7 +151,7 @@ def login():
             return jsonify({'success': False, 'message': 'SK Not Register'})
     return render_template('index.html')
 
-@app.route('/regis', methods=['GET', 'POST'])
+@app.route('/regis', methods=['POST'])
 def add():
     sk = session.get('sk')
     status = check_sk(sk)
