@@ -17,7 +17,7 @@ def create_connection():
             cursorclass=pymysql.cursors.DictCursor
         )
     except pymysql.Error as e:
-        print(f'Error: {e}')
+        return None
     return connection
 
 def chcek_connection():
@@ -34,18 +34,14 @@ def check_sk(sk):
     cursor = connection.cursor()
     
     try:
-        # Ambil kolom sk jika ada, bukan menggunakan COUNT(*)
         query = "SELECT sk FROM data WHERE sk = %s"
         cursor.execute(query, (sk,))
         result = cursor.fetchone()
-        
-        # Jika result ditemukan, kembalikan nilai sk dari database
         if result:
-            return result[0]  # Kembalikan nilai sk
+            return result[0]
         else:
-            return None  # Tidak ada sk yang cocok di database
+            return None
     except Exception as e:
-        print("Terjadi kesalahan:", e)
         return None
     finally:
         cursor.close()
@@ -91,7 +87,6 @@ def ceker():
             session['admin'] = sk
             return jsonify({'success': True, 'message': 'Succesfully Login'})
         else:
-            print(status)
             return jsonify({'success': False, 'message': 'SK Not Register'})
     return render_template('index.html')
 
@@ -157,7 +152,6 @@ def login():
             session['sk'] = sk
             return jsonify({'success': True, 'message': 'Succesfully Login'})
         else:
-            print(status)
             return jsonify({'success': False, 'message': 'SK Not Register'})
     return render_template('index.html')
 
@@ -192,24 +186,18 @@ def add():
                 res = r.post('https://familymoo.com/rest/api/auth/register', headers=head, json=payload)
                 data = res.json()
                 if data['success'] == True:
-                    print("OTP Succesfully Send")
                     return jsonify({'success': True, 'message': 'OTP Succesfully Send'})
                 elif data['code'] == 42:
-                    print('Nomor Telah Terdaftar')
                     return jsonify({'success': False, 'message': 'Nomor Telah Terdaftar'})
                 elif data['data']['fields']['phone']:
-                    print('Nomor Telah Terdaftar')
                     return jsonify({'success': False, 'message': 'Nomor Telah Terdaftar'})
                 else:
-                    print("Failed Send OTP")
                     return jsonify({'success': False, 'message': 'Failed Send OTP'})
                 
             except ValueError:
-                print("Invalid response from server")
                 return jsonify({'success': False, 'message': 'Invalid response from server'})
 
             except Exception as e:
-                print(f"Error: {e}")
                 return jsonify({'success': False, 'message': 'Nomor Telah Terdaftar'})
         return render_template('regis.html')
     else:
@@ -234,19 +222,15 @@ def otp():
             try:
                 res = r.post('https://familymoo.com/rest/api/auth/confirmOtp/register', headers=head, json=data).json()
                 if res['success'] == True:
-                    print(f'Acces Token : {res['data']['accessToken']}')
                     session['ac'] = res['data']['accessToken']
                     return jsonify({'success': True, 'message': 'Account Succesfully Create'})
                 else:
-                    print('Failed Register')
                     return jsonify({'success': False, 'message': 'Invalid response from server'})
             
             except ValueError:
-                print("Invalid response from server")
                 return jsonify({'success': False, 'message': 'Invalid response from server'})
 
             except Exception as e:
-                print(f"Error: {e}")
                 return jsonify({'success': False, 'message': 'OTP Wrong Input'})
     
         return render_template('otp.html')
@@ -280,23 +264,17 @@ def reedem():
                 res = r.post('https://familymoo.com/rest/api/redempt', headers=head, json=data)
                 payload = res.json()
                 if payload['success'] == True:
-                    print("Sukkes Redeem")
-                    print(f'Message : {payload['data']['message']}')
-                    print(f'RedemptioId : {payload['data']['redemptionId']}')
                     rid = payload['data']['redemptionId']
                     with open('akun.txt', 'a') as a:
                         a.write(f'{fn} | {ln} | {pw} | {no} | {ac} | {rid}\n')
                     return jsonify({'success': True, 'message': 'Coupon Succesfully Reedem'})
                 else:
-                    print('Failed Redeem')
                     return jsonify({'success': False, 'message': 'Coupon Failed Reedem'})
             
             except ValueError:
-                print("Invalid response from server")
                 return jsonify({'success': False, 'message': 'Invalid response from server'})
 
             except Exception as e:
-                print(f"Error: {e}")
                 return jsonify({'success': False, 'message': 'Gagal Tukar Kupon'})
         return render_template('reedem.html')
     else:
@@ -329,11 +307,9 @@ def kupon():
                 return jsonify({'success': True, 'message': 'Berhasil Cek Kupon', 'data': data})
             
         except ValueError:
-            print("Invalid response from server")
             return jsonify({'success': False, 'message': 'Invalid response from server'})
 
         except Exception as e:
-            print(f"Error: {e}")
             return jsonify({'success': False, 'message': 'Gagal Cek Kupon'})
 
         return render_template('check.html', data=data)
