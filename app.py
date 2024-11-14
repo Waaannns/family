@@ -10,10 +10,10 @@ def create_connection():
     connection = None                                                                                                                            
     try:
         connection = pymysql.connect(
-            host="localhost",
+            host="mysql.railway.internal",
             user="root",
-            password="",
-            database="dbsk",
+            password="zTsMtzpbtitImfeLTWlEHvKbbLWGJNXA",
+            database="railway",
             cursorclass=pymysql.cursors.DictCursor
         )
     except pymysql.Error as e:
@@ -22,10 +22,10 @@ def create_connection():
 
 def chcek_connection():
     connection = pymysql.connect(
-        host='localhost',
+        host='mysql.railway.internal',
         user='root',
-        password='',
-        database='dbsk'
+        password='zTsMtzpbtitImfeLTWlEHvKbbLWGJNXA',
+        database='railway'
     )
     return connection
 
