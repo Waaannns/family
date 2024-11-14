@@ -28,7 +28,7 @@ function handleSubmit(event) {
 
     const formData = new FormData(document.getElementById("dataForm"));
 
-    fetch('/add', {
+    fetch('/regis', {
         method: 'POST',
         body: formData
     })
