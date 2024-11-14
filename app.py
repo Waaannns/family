@@ -151,11 +151,11 @@ def login():
             return jsonify({'success': False, 'message': 'SK Not Register'})
     return render_template('index.html')
 
-@app.route('/regis', methods=['POST'])
+@app.route('/regis', methods=['GET', 'POST'])
 def add():
     sk = session.get('sk')
     status = check_sk(sk)
-    if status == sk:
+    if status:
         if request.method == 'POST':
             fn = request.form['fn']
             ln = request.form['ln']
