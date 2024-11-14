@@ -155,7 +155,7 @@ def login():
 def add():
     sk = session.get('sk')
     status = check_sk(sk)
-    if status == True:
+    if status == sk:
         if request.method == 'POST':
             fn = request.form['fn']
             ln = request.form['ln']
@@ -204,7 +204,7 @@ def otp():
     no = session.get('no')
     sk = session.get('sk')
     status = check_sk(sk)
-    if status == True:
+    if status == sk:
         if request.method == 'POST':
             otpp = request.form['otp']
 
@@ -243,7 +243,7 @@ def reedem():
     ac = session.get('ac')
     sk = session.get('sk')
     status = check_sk(sk)
-    if status == True:
+    if status == sk:
         if request.method == 'POST':
             ch = request.form['ch']
 
