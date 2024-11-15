@@ -63,7 +63,7 @@ def ad():
 def display():
     sk = session.get('admin')
     status = check_sk(sk)
-    if status == 'moldova2022':
+    if status:
         connection = create_connection()
         cursor = connection.cursor()
         query = "SELECT * FROM data"
@@ -79,7 +79,7 @@ def ceker():
     if request.method == 'POST':
         sk = request.form['sk']
         status = check_sk(sk)
-        if status == "moldova2022":
+        if status:
             session['admin'] = sk
             return jsonify({'success': True, 'message': 'Succesfully Login'})
         else:
@@ -144,7 +144,7 @@ def login():
     if request.method == 'POST':
         sk = request.form['sk']
         status = check_sk(sk)
-        if status == sk:
+        if status:
             session['sk'] = sk
             return jsonify({'success': True, 'message': 'Succesfully Login'})
         else:
@@ -204,7 +204,7 @@ def otp():
     no = session.get('no')
     sk = session.get('sk')
     status = check_sk(sk)
-    if status == sk:
+    if status:
         if request.method == 'POST':
             otpp = request.form['otp']
 
@@ -243,7 +243,7 @@ def reedem():
     ac = session.get('ac')
     sk = session.get('sk')
     status = check_sk(sk)
-    if status == sk:
+    if status:
         if request.method == 'POST':
             ch = request.form['ch']
 
