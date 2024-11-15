@@ -63,7 +63,7 @@ def ad():
 def display():
     sk = session.get('admin')
     status = check_sk(sk)
-    if status:
+    if status == 'moldova2022':
         connection = create_connection()
         cursor = connection.cursor()
         query = "SELECT * FROM data"
@@ -79,7 +79,7 @@ def ceker():
     if request.method == 'POST':
         sk = request.form['sk']
         status = check_sk(sk)
-        if status:
+        if status == 'moldova2022':
             session['admin'] = sk
             return jsonify({'success': True, 'message': 'Succesfully Login'})
         else:
